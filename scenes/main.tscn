@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://0w01e5u1mauv"]
+
+[ext_resource type="Texture2D" uid="uid://bgi16xay35dt3" path="res://assets/ASSET_PACK/sprite.png" id="1_sugp2"]
+[ext_resource type="FontFile" uid="uid://brt5op5bynso3" path="res://assets/ComicoroRu_0.ttf" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://bqjqd4q1u3ojv" path="res://scripts/main.gd" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bmjutjij57hng" path="res://assets/ASSET_PACK/icon-2.png" id="4_jyhfs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("1_sugp2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_272bh"]
+texture = SubResource("AtlasTexture_5vw27")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="Theme" id="Theme_mu3bi"]
+default_font = ExtResource("2_jyhfs")
+Button/styles/normal = SubResource("StyleBoxTexture_272bh")
+
+[node name="Main" type="Control" unique_id=569714975 node_paths=PackedStringArray("name_label", "job_label", "background", "avatar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_mu3bi")
+script = ExtResource("3_tbgi4")
+name_label = NodePath("MarginContainer/VBoxContainer/Label")
+job_label = NodePath("MarginContainer/VBoxContainer/Label2")
+background = NodePath("ColorRect")
+avatar = NodePath("MarginContainer/VBoxContainer/TextureRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1823685613]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(9.337366e-06, 0.7939641, 0.5789256, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1381603373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1119163860]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=909588132]
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_jyhfs")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1591558834]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "test"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1783982396]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "test"
+
+[node name="ButtonHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=38121179]
+layout_mode = 2
+
+[node name="Dev" type="Button" parent="MarginContainer/VBoxContainer/ButtonHBoxContainer" unique_id=72301946]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+action_mode = 0
+text = "dev
+"
+
+[node name="Design" type="Button" parent="MarginContainer/VBoxContainer/ButtonHBoxContainer" unique_id=1761396651]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "Des
+
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonHBoxContainer/Dev" to="." method="_on_dev_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonHBoxContainer/Design" to="." method="_on_design_pressed"]
